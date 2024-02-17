@@ -1,0 +1,11 @@
+<nav>
+  <ul class="nav-links">
+    <ng-container *ngIf="isLoggedIn">
+      <li><a routerLink="/admin/add/resort" *ngIf="isAdmin">Add Resort</a></li>
+      <li><a routerLink="/admin/view/resort" *ngIf="isAdmin">View Resort</a></li>
+      <li><a routerLink="/admin/view/bookings" *ngIf="isAdmin">View Bookings</a></li>
+      <li><a routerLink="/admin/view/review" *ngIf="isAdmin">View Reviews</a></li>
+    </ng-container>
+  </ul>
+</nav>
+

@@ -1,0 +1,54 @@
+<div>
+  <div class="main-head">
+    <h1>Resort Booking Details</h1>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Booking Id</th>
+        <th>User Id</th>
+        <th>Number of Persons</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Total Price</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resort of resorts">
+        <td>{{ resort.bookingId }}</td>
+        <td>{{ resort.userId }}</td>
+        <td>{{ resort.noOfPersons }}</td>
+        <td>{{ resort.fromDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ resort.toDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ resort.totalPrice }}</td>
+        <td>{{ resort.address }}</td>
+        <td>
+          <div class="buttons">
+            <button
+              class="edit-btn-grad btn-primary"
+              (click)="approveBooking(resort)"
+              [ngStyle]="{
+                'background-color':
+                  resort.status === 'APPROVED' ? 'blue' : 'green'
+              }"
+            >
+              {{ resort.status === "APPROVED" ? "Accepted" : "Accept" }}
+            </button>
+            <button
+              class="delete-btn-grad btn-danger"
+              (click)="rejectBooking(resort)"
+              [ngStyle]="{
+                'background-color':
+                  resort.status === 'REJECTED' ? 'blue' : '#f41818'
+              }"
+            >
+              {{ resort.status === "REJECTED" ? "Rejected" : "Reject" }}
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

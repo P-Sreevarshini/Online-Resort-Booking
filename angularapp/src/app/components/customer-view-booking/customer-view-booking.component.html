@@ -1,0 +1,62 @@
+<div id="resortBookingHomeBody" [ngClass]="{ blur: showDeletePopup }">
+  <div class="main-head">
+    <h1>Resort Booking Details</h1>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Resort Id</th>
+        <th>Resort Name</th>
+        <th>Address</th>
+        <th>Number of Persons</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.resortId }}</td>
+        <td>{{ booking.resort.resortName }}</td>
+        <td>
+          <span *ngIf="!isEditing || booking !== selectedBooking">{{ booking.address }}</span>
+          <textarea *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.address"></textarea>
+        </td>
+        <td>
+          <span *ngIf="!isEditing || booking !== selectedBooking">{{ booking.noOfPersons }}</span>
+          <input *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.noOfPersons">
+        </td>
+        <td>
+          <span *ngIf="!isEditing || booking !== selectedBooking">{{ booking.fromDate | date : "dd/MM/yyyy"}}</span>
+          <input *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.fromDate" type="date">
+        </td>
+        <td>
+          <span *ngIf="!isEditing || booking !== selectedBooking">{{ booking.toDate | date : "dd/MM/yyyy"}}</span>
+          <input *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.toDate" type="date">
+        </td>
+        <td>{{ booking.totalPrice }}</td>
+        <td>{{ booking.status }}</td>
+        <td>
+          <div class="buttons">
+            <!-- <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="edit-btn-grad btn-primary" (click)="editBooking(booking)">Edit</button> -->
+            <button *ngIf="isEditing && booking === selectedBooking" class="save-btn-grad btn-primary" (click)="updateBooking(booking)">Save</button>
+            <button *ngIf="isEditing && booking === selectedBooking" class="cancel-btn-grad btn-primary" (click)="cancelEdit()">Cancel</button>            
+            <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedBooking = booking">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="showDeletePopup" class="delete-popup">
+  <p>Are you sure you want to delete?</p>
+  <button
+    (click)="deleteBooking(selectedBooking); showDeletePopup = false"
+    id="delete-btn"
+  >
+    Yes, Delete
+  </button>
+  <button (click)="showDeletePopup = false">Cancel</button>
+</div>

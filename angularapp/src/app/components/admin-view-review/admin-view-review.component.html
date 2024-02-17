@@ -1,0 +1,29 @@
+<div id="viewResortHomeBody" [ngClass]="{ blur: showDeletePopup }">
+    <div class="main-head">
+      <h1>Review Details</h1>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Review Id</th>
+            <th>User Id</th>
+            <th>Subject</th>
+            <th>Review</th>
+            <th>Ratings(out of 5)</th>
+            <th>Date Created</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let review of reviews">
+            <td>{{ review.reviewId }}</td>
+            <td>{{ review.userId }}</td>
+            <td>{{ review.subject }}</td>
+            <td>{{ review.body }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.dateCreated | date : "dd/MM/yyyy" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
