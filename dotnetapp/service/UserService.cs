@@ -11,6 +11,8 @@ namespace dotnetapp.Service
         Task<string> GenerateJwtTokenAsync(User user);
         Task<User> GetUserByEmailAsync(string email);
         Task<List<User>> GetAllUsersAsync();
+                Task<User> GetUserByIdAsync(long userId); // Add GetUserByIdAsync method
 
-    }
+
+    } 
 }

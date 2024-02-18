@@ -62,5 +62,9 @@ namespace dotnetapp.Repository
             await _context.SaveChangesAsync();
             return resort;
         }
+         public async Task<Resort> GetByIdAsync(long id)
+        {
+            return await _context.Resorts.FindAsync(id);
+        }
     }
 }

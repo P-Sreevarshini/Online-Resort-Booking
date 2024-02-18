@@ -8,5 +8,7 @@ namespace dotnetapp.Service
     {
         Task<List<Review>> GetAllReviewsAsync();
         Task<Review> AddReviewAsync(Review review);
+        Task<IEnumerable<Review>> GetReviewsByUserIdAsync(long userId);
+
     }
 }

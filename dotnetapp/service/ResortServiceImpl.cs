@@ -18,7 +18,7 @@ namespace dotnetapp.Service
         {
             return await _repository.GetAllResortsAsync();
         }
-//AddResortAsync
+
         public async Task<Resort> AddResortAsync(Resort resort)
         {
             return await _repository.AddResortAsync(resort);
@@ -32,6 +32,10 @@ namespace dotnetapp.Service
         public async Task<Resort> DeleteResortAsync(long id)
         {
             return await _repository.DeleteResortAsync(id);
+        }
+        public async Task<Resort> GetResortByIdAsync(long id)
+        {
+            return await _repository.GetByIdAsync(id);
         }
     }
 }

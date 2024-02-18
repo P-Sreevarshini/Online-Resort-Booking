@@ -97,6 +97,25 @@ namespace dotnetapp.Controllers
             return StatusCode(500, "Internal server error");
         }
     }
+    [Authorize(Roles = "Customer,Admin")]
+    [HttpGet("{ResortId}")]
+    public async Task<ActionResult<Resort>> Get(long ResortId)
+    {
+        try
+        {
+            var resort = await _resortService.GetResortByIdAsync(ResortId);
+            if (resort == null)
+            {
+                return NotFound();
+            }
+            return Ok(resort);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
  
     }
 }

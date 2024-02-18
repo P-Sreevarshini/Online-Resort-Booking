@@ -10,5 +10,6 @@ namespace dotnetapp.Service
         Task<Resort> AddResortAsync(Resort resort);
         Task<Resort> UpdateResortAsync(long id, Resort resort);
         Task<Resort> DeleteResortAsync(long id);
+        Task<Resort> GetResortByIdAsync(long id);
     }
 }

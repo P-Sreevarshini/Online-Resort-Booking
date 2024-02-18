@@ -9,7 +9,7 @@ namespace dotnetapp.Models
     public class Booking
     {
         [Key]
-        public long? BookingId { get; set; }
+        public long BookingId { get; set; }
  
         public int? NoOfPersons { get; set; }
  
@@ -25,10 +25,10 @@ namespace dotnetapp.Models
  
         // Foreign key for the Many-to-One relationship with User
         public long? UserId { get; set; } // Nullable foreign key
-    [JsonIgnore]
+  // [JsonIgnore]
  
         [ForeignKey(nameof(UserId))]
-        public virtual User? User { get; set; } // Nullable navigation property
+        public virtual User User { get; set; } // Nullable navigation property
     // [JsonIgnore]
  
         public long? ResortId { get; set; } // Nullable foreign key

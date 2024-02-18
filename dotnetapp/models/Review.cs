@@ -13,7 +13,6 @@ namespace dotnetapp.Models
          [Key]
         public int ReviewId { get; set; } 
 
-        public long UserId { get; set; }
         public string Subject { get; set; }
 
         public string Body { get; set; }
@@ -22,8 +21,12 @@ namespace dotnetapp.Models
         public int Rating { get; set; }
 
         public DateTime DateCreated { get; set; }
-        [JsonIgnore]
+        public long UserId { get; set; }
+
+  //   [JsonIgnore]
         [ForeignKey(nameof(UserId))]
-        public virtual User? User { get; set; }
+        public virtual User User { get; set; }
+     //   public virtual ICollection<User>? Users { get; set; }
+
     }
 }

@@ -45,6 +45,8 @@ namespace dotnetapp.Repository
         Task<User> GetUserByEmailAsync(string email);
         Task<User> AddUserAsync(User user);
         Task<List<User>> GetAllUsersAsync();
+        Task<User> GetUserByIdAsync(long userId);
+
     }
 
     public class UserRepo : IUserRepository
@@ -71,6 +73,10 @@ namespace dotnetapp.Repository
         public async Task<List<User>> GetAllUsersAsync()
         {
             return await _context.Users.ToListAsync();
+        }
+          public async Task<User> GetUserByIdAsync(long userId)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
         }
     }
 }
